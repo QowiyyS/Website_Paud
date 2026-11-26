@@ -7,6 +7,11 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\WaliController;
 use App\Http\Controllers\RaporController;
 use App\Http\Controllers\GuruManagementController;
+use App\Http\Controllers\Admin\AnakController;
+use App\Http\Controllers\Admin\PenggunaController;
+use App\Http\Controllers\Admin\PeriodeRaporController;
+use App\Http\Controllers\Admin\WaliAnakController;
+use App\Http\Controllers\Admin\RaporAdminController;
 
 // ================= RUTE PUBLIK =================
 Route::view('/', 'landing.index')->name('landing');
@@ -35,8 +40,28 @@ Route::middleware(['auth'])->get('/rapor/{id}', [RaporController::class, 'show']
 Route::middleware(['auth', 'peran:admin,admin_guru'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-    // Manajemen Guru & Staff Pengajar
+    // Manajemen Guru & Staf Pengajar
     Route::resource('guru', GuruManagementController::class)->except(['show']);
+
+    // Master Data Siswa KB & TK (POV Admin)
+    Route::resource('anak', AnakController::class);
+
+    // Master Akun Pengguna & Wali Murid (POV Admin)
+    Route::resource('pengguna', PenggunaController::class);
+
+    // Relasi Penautan Wali Murid ke Anak (POV Admin)
+    Route::post('wali-anak', [WaliAnakController::class, 'store'])->name('wali-anak.store');
+    Route::delete('wali-anak/{id_pengguna}/{id_anak}', [WaliAnakController::class, 'destroy'])->name('wali-anak.destroy');
+
+    // Master Periode Rapor & Tahun Ajaran (POV Admin)
+    Route::resource('periode', PeriodeRaporController::class);
+
+    // Kontrol Persetujuan, Penerbitan, dan Pembukaan Ulang Rapor (POV Admin)
+    Route::get('rapor', [RaporAdminController::class, 'index'])->name('rapor.index');
+    Route::get('rapor/{id_rapor}', [RaporAdminController::class, 'show'])->name('rapor.show');
+    Route::post('rapor/{id_rapor}/setujui', [RaporAdminController::class, 'setujui'])->name('rapor.setujui');
+    Route::post('rapor/{id_rapor}/terbitkan', [RaporAdminController::class, 'terbitkan'])->name('rapor.terbitkan');
+    Route::post('rapor/{id_rapor}/buka-ulang', [RaporAdminController::class, 'bukaUlang'])->name('rapor.buka-ulang');
 });
 
 

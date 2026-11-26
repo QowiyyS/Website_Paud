@@ -15,6 +15,8 @@ class AdminController extends Controller
     public function index()
     {
         $totalSiswa = Anak::count();
+        $totalKB = Anak::where('kelompok', 'KB')->count();
+        $totalTK = Anak::where('kelompok', 'TK')->count();
         $totalGuru = Pengguna::whereIn('peran', ['guru', 'admin_guru'])->count();
         $totalWali = Pengguna::where('peran', 'walimurid')->count();
         $totalRapor = HeadRaport::count();
@@ -29,6 +31,8 @@ class AdminController extends Controller
 
         return view('admin.dashboard', compact(
             'totalSiswa',
+            'totalKB',
+            'totalTK',
             'totalGuru',
             'totalWali',
             'totalRapor',

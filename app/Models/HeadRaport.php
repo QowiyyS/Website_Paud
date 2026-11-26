@@ -113,6 +113,14 @@ class HeadRaport extends Model
     }
 
     /**
+     * Alias relasi blok rapor (untuk kompatibilitas controller admin).
+     */
+    public function blok(): HasMany
+    {
+        return $this->bagian();
+    }
+
+    /**
      * Relasi rapor dengan riwayat perubahan.
      */
     public function riwayatPerubahan(): HasMany
@@ -122,5 +130,13 @@ class HeadRaport extends Model
             'id_rapor',
             'id_rapor'
         );
+    }
+
+    /**
+     * Alias relasi riwayat rapor (untuk kompatibilitas controller admin).
+     */
+    public function riwayat(): HasMany
+    {
+        return $this->riwayatPerubahan();
     }
 }

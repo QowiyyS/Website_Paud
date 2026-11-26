@@ -29,8 +29,12 @@
                 $raporMenungguCount = \App\Models\HeadRaport::where('status_rapor', 'diajukan')->count();
                 $menu = [
                     ['label' => 'Dashboard', 'url' => route('admin.dashboard'), 'active' => request()->routeIs('admin.dashboard'), 'badge' => null],
-                    ['label' => 'Rapor Triwulan', 'url' => route('rapor.index'), 'active' => request()->routeIs('rapor.*'), 'badge' => $raporMenungguCount],
+                    ['label' => 'Data Siswa (KB & TK)', 'url' => route('admin.anak.index'), 'active' => request()->routeIs('admin.anak.*'), 'badge' => null],
+                    ['label' => 'Akun & Relasi Wali', 'url' => route('admin.pengguna.index'), 'active' => request()->routeIs('admin.pengguna.*'), 'badge' => null],
                     ['label' => 'Guru & Staf', 'url' => route('admin.guru.index'), 'active' => request()->routeIs('admin.guru.*'), 'badge' => null],
+                    ['label' => 'Periode Rapor', 'url' => route('admin.periode.index'), 'active' => request()->routeIs('admin.periode.*'), 'badge' => null],
+                    ['label' => 'Pengesahan Rapor', 'url' => route('admin.rapor.index'), 'active' => request()->routeIs('admin.rapor.*'), 'badge' => $raporMenungguCount],
+                    ['label' => 'Rapor Triwulan', 'url' => route('rapor.index'), 'active' => request()->routeIs('rapor.*'), 'badge' => null],
                     ['label' => 'Website Publik', 'url' => route('landing'), 'active' => false, 'badge' => null, 'blank' => true],
                 ];
             @endphp
