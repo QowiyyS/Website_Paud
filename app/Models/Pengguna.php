@@ -35,6 +35,29 @@ class Pengguna extends Authenticatable
     protected $authPasswordName = 'password_hash';
 
     /**
+     * Mengembalikan password hash untuk autentikasi Laravel.
+     */
+    public function getAuthPassword(): string
+    {
+        return $this->password_hash;
+    }
+
+    public function isAdmin(): bool
+    {
+        return in_array($this->peran, ['admin', 'admin_guru']);
+    }
+
+    public function isGuru(): bool
+    {
+        return in_array($this->peran, ['guru', 'admin_guru', 'admin']);
+    }
+
+    public function isWali(): bool
+    {
+        return $this->peran === 'walimurid';
+    }
+
+    /**
      * Relasi pengguna dengan anak yang terhubung.
      */
     public function anak(): BelongsToMany

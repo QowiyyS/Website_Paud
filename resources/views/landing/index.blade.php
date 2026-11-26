@@ -48,42 +48,45 @@
 
 
         <!-- MENU NAVIGASI -->
-        <div class="flex flex-wrap items-center justify-center gap-1 rounded-full bg-white p-1.5 shadow-sm ring-1 ring-blue-100">
+        <div class="flex flex-wrap items-center justify-center gap-1 rounded-full bg-white p-1.5 shadow-sm ring-1 ring-blue-100" id="nav-container">
 
             <a href="#beranda"
-                class="rounded-full bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700">
+                class="nav-menu-link rounded-full bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition duration-200 active:scale-95 hover:bg-blue-700">
                 Beranda
             </a>
 
             <a href="#tentang"
-                class="rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-orange-100 hover:text-orange-700">
+                class="nav-menu-link rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition duration-200 active:scale-95 hover:bg-orange-100 hover:text-orange-700">
                 Tentang Kami
             </a>
 
             <a href="#program"
-                class="rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-orange-100 hover:text-orange-700">
+                class="nav-menu-link rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition duration-200 active:scale-95 hover:bg-orange-100 hover:text-orange-700">
                 Program
             </a>
 
             <a href="#pendaftaran"
-                class="rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-orange-100 hover:text-orange-700">
+                class="nav-menu-link rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition duration-200 active:scale-95 hover:bg-orange-100 hover:text-orange-700">
                 Pendaftaran
             </a>
 
         </div>
 
 
-        <!-- TOMBOL LOGIN -->
-        <a href="/login"
-            class="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-extrabold text-white shadow-md shadow-orange-200 transition duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-lg">
-
-            Login Wali Murid
-
-            <span class="transition group-hover:translate-x-1">
-                →
-            </span>
-
-        </a>
+        <!-- TOMBOL LOGIN / PORTAL -->
+        @auth
+            <a href="{{ auth()->user()->peran === 'admin' ? route('admin.dashboard') : (auth()->user()->peran === 'guru' ? route('guru.dashboard') : route('wali.dashboard')) }}"
+                class="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-extrabold text-white shadow-md shadow-blue-200 transition duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg">
+                Dashboard ({{ auth()->user()->peran }})
+                <span class="transition group-hover:translate-x-1">→</span>
+            </a>
+        @else
+            <a href="{{ route('login') }}"
+                class="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-extrabold text-white shadow-md shadow-orange-200 transition duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-lg">
+                Portal Masuk / Login
+                <span class="transition group-hover:translate-x-1">→</span>
+            </a>
+        @endauth
 
     </nav>
 
@@ -95,7 +98,7 @@
     <!-- ================= HERO SECTION ================= -->
     <section
         id="beranda"
-        class="relative isolate min-h-[620px] overflow-hidden bg-blue-900">
+        class="relative isolate min-h-[620px] overflow-hidden bg-blue-900 scroll-mt-24">
         <!-- FOTO GEDUNG PAUD -->
         <img
             src="{{ asset('images/paud-haqqul-yaqin.jpg') }}"
@@ -198,7 +201,7 @@
 
 
     <!-- ================= TENTANG KAMI ================= -->
-    <section id="tentang" class="relative overflow-hidden bg-[#FFF8ED] px-6 py-20 lg:py-24">
+    <section id="tentang" class="relative overflow-hidden bg-[#FFF8ED] px-6 py-20 lg:py-24 scroll-mt-24">
 
         <!-- DEKORASI BACKGROUND -->
         <div class="pointer-events-none absolute -left-20 top-20 h-56 w-56 rounded-full bg-blue-200/40"></div>
@@ -368,7 +371,7 @@
 
 
     <!-- ================= PROGRAM PENDIDIKAN ================= -->
-    <section id="program" class="relative overflow-hidden bg-white px-6 py-20 lg:py-24">
+    <section id="program" class="relative overflow-hidden bg-white px-6 py-20 lg:py-24 scroll-mt-24">
 
         <!-- ORNAMEN -->
         <div class="pointer-events-none absolute -left-16 top-20 h-40 w-40 rounded-full bg-orange-100"></div>
@@ -482,7 +485,7 @@
 
 
     <!-- ================= PENDAFTARAN ================= -->
-    <section id="pendaftaran" class="relative overflow-hidden bg-[#FFF8ED] px-4 py-20 sm:px-6 lg:py-24">
+    <section id="pendaftaran" class="relative overflow-hidden bg-[#FFF8ED] px-4 py-20 sm:px-6 lg:py-24 scroll-mt-24">
 
         <!-- Dekorasi kecil -->
         <div class="pointer-events-none absolute left-[8%] top-12 h-5 w-5 rounded-full bg-[#FFB45E]/40"></div>
