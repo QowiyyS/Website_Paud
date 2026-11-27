@@ -64,17 +64,17 @@
 
         <!-- TOMBOL LOGIN / PORTAL -->
         @auth
-            <a href="{{ auth()->user()->peran === 'admin' ? route('admin.dashboard') : (auth()->user()->peran === 'guru' ? route('guru.dashboard') : route('wali.dashboard')) }}"
-                class="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-extrabold text-white shadow-md shadow-blue-200 transition duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg">
-                Dashboard ({{ auth()->user()->peran }})
-                <span class="transition group-hover:translate-x-1">→</span>
-            </a>
+        <a href="{{ auth()->user()->peran === 'admin' ? route('admin.dashboard') : (auth()->user()->peran === 'guru' ? route('guru.dashboard') : route('wali.dashboard')) }}"
+            class="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-extrabold text-white shadow-md shadow-blue-200 transition duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-lg">
+            Dashboard ({{ auth()->user()->peran }})
+            <span class="transition group-hover:translate-x-1">→</span>
+        </a>
         @else
-            <a href="{{ route('login') }}"
-                class="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-extrabold text-white shadow-md shadow-orange-200 transition duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-lg">
-                Portal Masuk / Login
-                <span class="transition group-hover:translate-x-1">→</span>
-            </a>
+        <a href="{{ route('login') }}"
+            class="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-extrabold text-white shadow-md shadow-orange-200 transition duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-lg">
+            Portal Masuk / Login
+            <span class="transition group-hover:translate-x-1">→</span>
+        </a>
         @endauth
 
     </nav>
@@ -83,15 +83,37 @@
 
 <main>
 
+
     <!-- ================= HERO SECTION ================= -->
     <section
         id="beranda"
-        class="relative isolate min-h-[620px] overflow-hidden bg-blue-900 scroll-mt-24">
-        <!-- FOTO GEDUNG PAUD -->
-        <img
-            src="{{ asset('images/paud-haqqul-yaqin.jpg') }}"
-            alt="Gedung PAUD Haqqul Yaqin"
-            class="absolute inset-0 z-0 h-full w-full object-cover object-center">
+        class="relative isolate min-h-[620px] w-full overflow-hidden bg-blue-900 scroll-mt-24">
+
+        <!-- FOTO HERO SLIDESHOW -->
+        <div id="hero-slider" class="absolute inset-0 z-0 overflow-hidden">
+
+            <!-- FOTO 1: GEDUNG PAUD -->
+            <img
+                src="{{ asset('images/paud-haqqul-yaqin.jpg') }}"
+                alt="Gedung PAUD Haqqul Yaqin"
+                class="hero-slide absolute inset-0 h-full w-full object-cover object-center opacity-100 transition-opacity duration-1000">
+
+            <!-- FOTO 2: KEGIATAN PAUD -->
+            <img
+                src="{{ asset('images/famget.jpg') }}"
+                alt="Kegiatan PAUD Haqqul Yaqin"
+                class="hero-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-1000">
+
+            <!-- INDIKATOR SLIDER -->
+            <div class="absolute bottom-36 right-8 z-20 flex gap-2 sm:bottom-40 sm:right-12">
+
+                <span class="hero-indicator h-2.5 w-7 rounded-full bg-orange-400 transition-all duration-500"></span>
+
+                <span class="hero-indicator h-2.5 w-2.5 rounded-full bg-white/70 transition-all duration-500"></span>
+
+            </div>
+
+        </div>
 
         <!-- OVERLAY FOTO -->
         <div class="absolute inset-0 z-0 bg-gradient-to-r from-blue-950/90 via-blue-900/75 to-blue-900/35"></div>
@@ -114,10 +136,11 @@
             ✦
         </div>
 
+
         <!-- KONTEN HERO -->
         <div class="relative z-10 mx-auto flex min-h-[620px] max-w-7xl items-center px-6 py-20 lg:px-8">
 
-            <div class="max-w-3xl">
+            <div class="max-w-3xl -translate-y-4 sm:-translate-y-6">
 
                 <!-- LABEL -->
                 <div class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-5 py-2.5 shadow-lg backdrop-blur-md">
@@ -131,6 +154,7 @@
                     </span>
 
                 </div>
+
 
                 <!-- JUDUL -->
                 <h2 class="mt-8 text-4xl font-black leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -148,6 +172,7 @@
 
                 </h2>
 
+
                 <!-- DESKRIPSI -->
                 <p class="mt-8 max-w-2xl text-base leading-8 text-blue-50 sm:text-lg">
                     Setiap anak memiliki potensi dan keistimewaan.
@@ -157,70 +182,54 @@
                     yang menyenangkan.
                 </p>
 
-                <!-- TOMBOL -->
-                <div class="mt-9 flex flex-wrap gap-4">
-
-                    <a
-                        href="#program"
-                        class="inline-flex items-center gap-3 rounded-full bg-orange-500 px-8 py-4 text-sm font-extrabold text-white shadow-lg shadow-orange-900/20 transition duration-300 hover:-translate-y-1 hover:bg-orange-600">
-
-                        Jelajahi Program
-                        <span class="text-lg">→</span>
-                    </a>
-
-                    <a
-                        href="#tentang"
-                        class="rounded-full border-2 border-white/80 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition duration-300 hover:bg-white hover:text-blue-900">
-
-                        Kenali Sekolah Kami
-                    </a>
-
-                </div>
-
             </div>
+
         </div>
 
 
         <!-- PEMBATAS GELOMBANG HERO -->
-        <div class="absolute bottom-0 left-0 z-20 w-full overflow-hidden leading-none">
+        <!-- DILETAKKAN LANGSUNG DI DALAM SECTION, DI LUAR CONTAINER KONTEN -->
+        <div class="pointer-events-none absolute bottom-0 left-1/2 z-20 w-screen max-w-none -translate-x-1/2 overflow-hidden leading-none">
+
             <svg
                 class="block h-24 w-full md:h-32"
                 viewBox="0 0 1440 150"
                 preserveAspectRatio="none"
                 xmlns="http://www.w3.org/2000/svg">
 
-                <!-- Bidang putih -->
+                <!-- BIDANG PUTIH -->
                 <path
                     d="M0 85
-               C180 75 230 110 420 112
-               C650 115 790 90 960 65
-               C1140 38 1300 25 1440 12
-               L1440 150 L0 150 Z"
+                   C180 75 230 110 420 112
+                   C650 115 790 90 960 65
+                   C1140 38 1300 25 1440 12
+                   L1440 150 L0 150 Z"
                     fill="#FFF8ED" />
 
-                <!-- Garis oranye melengkung -->
+                <!-- GARIS ORANYE MELENGKUNG -->
                 <path
                     d="M0 85
-               C120 85 175 105 250 65
-               C310 32 285 0 250 8
-               C210 18 220 65 270 88
-               C320 112 390 116 470 112"
+                   C120 85 175 105 250 65
+                   C310 32 285 0 250 8
+                   C210 18 220 65 270 88
+                   C320 112 390 116 470 112"
                     fill="none"
                     stroke="#F97316"
                     stroke-width="10"
                     stroke-linecap="round" />
 
-                <!-- Garis kuning -->
+                <!-- GARIS KUNING -->
                 <path
                     d="M470 112
-               C720 105 900 72 1080 45
-               C1220 25 1340 18 1440 12"
+                   C720 105 900 72 1080 45
+                   C1220 25 1340 18 1440 12"
                     fill="none"
                     stroke="#FBBF24"
                     stroke-width="9"
                     stroke-linecap="round" />
 
             </svg>
+
         </div>
 
     </section>
@@ -683,10 +692,12 @@
                 </p>
 
                 <a
-                    href="#pendaftaran"
+                    href="{{ asset('build/documents/formulir_pendaftaran.pdf') }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="mt-7 inline-flex items-center gap-2 rounded-full bg-[#FF8A24] px-7 py-3.5 text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#F47B12] hover:shadow-lg">
 
-                    Informasi Pendaftaran
+                    Lihat Formulir Pendaftaran
                     <span aria-hidden="true">→</span>
                 </a>
 
@@ -699,14 +710,14 @@
 </main>
 
 
+
 <!-- ================= FOOTER ================= -->
-<footer class="relative ml-0 overflow-hidden bg-blue-950 px-6 py-10 text-white">
+<footer class="relative overflow-hidden bg-blue-950 px-6 pb-6 pt-16 text-white">
 
-    <!-- GELOMBANG ATAS -->
-    <div class="absolute left-0 top-0 w-full overflow-hidden leading-none">
-
+    <!-- GELOMBANG ATAS FOOTER -->
+    <div class="pointer-events-none absolute left-0 top-0 w-full overflow-hidden leading-none">
         <svg
-            class="block h-8 w-full"
+            class="block h-10 w-full"
             viewBox="0 0 1440 60"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg">
@@ -716,24 +727,41 @@
                 fill="#FFF8ED" />
 
         </svg>
-
     </div>
+
 
     <div class="relative mx-auto max-w-7xl pt-8">
 
+        <!-- IDENTITAS SEKOLAH DAN NAVIGASI -->
         <div class="flex flex-col justify-between gap-8 md:flex-row md:items-center">
 
+            <!-- IDENTITAS -->
             <div>
-                <h2 class="text-xl font-extrabold">
-                    PAUD Haqqul Yaqin
-                </h2>
+                <div class="flex items-center gap-3">
 
-                <p class="mt-2 text-sm text-blue-200">
-                    Pendidikan Anak Usia Dini
-                </p>
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1.5">
+                        <img
+                            src="{{ asset('images/logo-paud.png') }}"
+                            alt="Logo PAUD Haqqul Yaqin"
+                            class="h-full w-full object-contain">
+                    </div>
+
+                    <div>
+                        <h2 class="text-xl font-extrabold text-white">
+                            PAUD Haqqul Yaqin
+                        </h2>
+
+                        <p class="mt-1 text-sm text-blue-200">
+                            Pendidikan Anak Usia Dini
+                        </p>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="flex flex-wrap gap-6 text-sm text-blue-100">
+
+            <!-- NAVIGASI -->
+            <nav class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-blue-100">
 
                 <a href="#beranda" class="transition hover:text-orange-400">
                     Beranda
@@ -751,16 +779,206 @@
                     Pendaftaran
                 </a>
 
+            </nav>
+
+        </div>
+
+
+        <!-- GARIS PEMISAH -->
+        <div class="my-9 border-t border-white/25"></div>
+
+
+        <!-- INFORMASI KONTAK DAN ALAMAT -->
+        <div class="grid gap-10 md:grid-cols-2 lg:gap-20">
+
+
+            <!-- KONTAK -->
+            <div>
+
+                <h3 class="text-lg font-extrabold text-white">
+                    Hubungi Kami
+                </h3>
+
+                <p class="mt-2 text-sm leading-6 text-blue-200">
+                    Silakan hubungi kami untuk mendapatkan
+                    informasi lebih lanjut mengenai PAUD Haqqul Yaqin.
+                </p>
+
+                <div class="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2">
+
+                    <!-- TELEPON -->
+                    <a href="tel:+6281225852505"
+                        class="group flex min-w-0 items-center gap-3">
+
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-400/15 text-lg text-orange-300">
+                            ☎
+                        </span>
+
+                        <span class="min-w-0">
+                            <span class="block text-xs text-blue-300">
+                                Telepon / WhatsApp
+                            </span>
+                            <span class="block text-sm font-semibold text-white group-hover:text-orange-300">
+                                +62 812-2585-2505
+                            </span>
+                        </span>
+                    </a>
+
+                    <!-- TIKTOK -->
+                    <div class="flex min-w-0 items-center gap-3">
+
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-400/15 text-lg text-orange-300">
+                            ♪
+                        </span>
+
+                        <span class="min-w-0">
+                            <span class="block text-xs text-blue-300">
+                                TikTok
+                            </span>
+                            <span class="block text-sm font-semibold text-white">
+                                @paudhaqqulyaqin
+                            </span>
+                        </span>
+                    </div>
+
+                    <!-- INSTAGRAM -->
+                    <div class="flex min-w-0 items-center gap-3">
+
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-400/15 text-lg text-orange-300">
+                            ◎
+                        </span>
+
+                        <span class="min-w-0">
+                            <span class="block text-xs text-blue-300">
+                                Instagram
+                            </span>
+                            <span class="block text-sm font-semibold text-white">
+                                @paudhaqqulyaqin
+                            </span>
+                        </span>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <a href="mailto:humas@haqqulyaqin.or.id"
+                        class="flex min-w-0 items-center gap-3">
+
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-400/15 text-lg text-orange-300">
+                            ✉
+                        </span>
+
+                        <span class="min-w-0">
+                            <span class="block text-xs text-blue-300">
+                                Email
+                            </span>
+                            <span class="block break-all text-sm font-semibold text-white">
+                                humas@haqqulyaqin.or.id
+                            </span>
+                        </span>
+                    </a>
+
+                </div>
+            </div>
+            <!-- AKHIR KONTAK -->
+
+
+            <!-- ALAMAT SEKOLAH -->
+            <div>
+
+                <h3 class="text-lg font-extrabold text-white">
+                    Lokasi Sekolah
+                </h3>
+
+                <p class="mt-2 text-sm leading-6 text-blue-200">
+                    Temukan lokasi PAUD Haqqul Yaqin untuk mengenal
+                    lingkungan belajar si kecil lebih dekat.
+                </p>
+
+
+                <div class="mt-6 rounded-2xl border border-white/15 bg-white/[0.06] p-6 transition duration-300 hover:border-orange-300/40 hover:bg-white/[0.09]">
+
+                    <!-- IKON LOKASI -->
+                    <h4 class="mt-5 text-base font-extrabold text-white">
+                        PAUD Haqqul Yaqin
+                    </h4>
+
+
+                    <p class="mt-3 text-sm leading-7 text-blue-100">
+                        Jln. Cempaka RT. 01 RW. 01,
+                        Mertoyudan, Kecamatan Mertoyudan,
+                        Kabupaten Magelang.
+                    </p>
+
+                    <div class="mt-5 h-1 w-14 rounded-full bg-orange-400"></div>
+
+                </div>
+
             </div>
 
         </div>
 
-        <div class="mt-8 border-t border-blue-800 pt-6 text-center text-xs text-blue-300">
-            &copy; {{ date('Y') }} PAUD Haqqul Yaqin. All rights reserved.
+
+        <!-- GARIS PEMISAH COPYRIGHT -->
+        <div class="mt-10 border-t border-white/20"></div>
+
+
+        <!-- COPYRIGHT -->
+        <div class="flex flex-col items-center justify-between gap-3 pt-6 text-center text-xs text-blue-300 sm:flex-row">
+
+            <p>
+                &copy; {{ date('Y') }} PAUD Haqqul Yaqin.
+                All rights reserved.
+            </p>
+
+            <p class="font-medium text-blue-200">
+                Belajar • Bermain • Bertumbuh
+            </p>
+
         </div>
 
     </div>
 
 </footer>
+<!-- ================= END FOOTER ================= -->
+
+
+<!-- ================= JAVASCRIPT HERO SLIDER ================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.hero-indicator');
+
+        if (slides.length < 2) {
+            return;
+        }
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('opacity-100', i === index);
+                slide.classList.toggle('opacity-0', i !== index);
+            });
+
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('w-7', i === index);
+                indicator.classList.toggle('w-2.5', i !== index);
+                indicator.classList.toggle('bg-orange-400', i === index);
+                indicator.classList.toggle('bg-white/70', i !== index);
+            });
+
+        }
+
+        setInterval(() => {
+
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            showSlide(currentSlide);
+
+        }, 4000);
+
+    });
+</script>
 
 @endsection
