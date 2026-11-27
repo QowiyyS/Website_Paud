@@ -72,7 +72,7 @@
         @else
         <a href="{{ route('login') }}"
             class="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-extrabold text-white shadow-md shadow-orange-200 transition duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-lg">
-            Portal Masuk / Login
+            Login
             <span class="transition group-hover:translate-x-1">→</span>
         </a>
         @endauth
@@ -619,17 +619,28 @@
 
 
 
+
+
     <!-- ================= PENDAFTARAN ================= -->
-    <section id="pendaftaran" class="relative overflow-hidden bg-[#FFF8ED] px-4 py-20 sm:px-6 lg:py-24 scroll-mt-24">
+    <section id="pendaftaran" class="relative overflow-hidden bg-[#FFF8ED] px-4 py-16 sm:px-6 lg:py-20 scroll-mt-24">
 
         <!-- DEKORASI KECIL -->
         <div class="pointer-events-none absolute left-[8%] top-12 h-5 w-5 rounded-full bg-[#FFB45E]/40"></div>
-
         <div class="pointer-events-none absolute right-[10%] bottom-16 h-7 w-7 rounded-full bg-[#A9D2E6]/50"></div>
 
-        <div class="relative mx-auto max-w-5xl">
 
-            <!-- BACKGROUND PERSEGI PANJANG DENGAN OUTLINE BERGELOMBANG -->
+        <!-- LABEL PPDB DI LUAR GELOMBANG -->
+        <div class="relative z-20 mb-4 text-center">
+            <span class="inline-block rounded-lg bg-[#FFE5CC] px-5 py-2 text-3xl font-bold text-[#E87924] md:text-4xl lg:text-5xl">
+                Penerimaan Peserta Didik Baru
+            </span>
+        </div>
+
+
+        <!-- AREA UTAMA GELOMBANG -->
+        <div class="relative mx-auto max-w-4xl">
+
+            <!-- BACKGROUND GELOMBANG -->
             <svg
                 class="pointer-events-none absolute inset-0 h-full w-full"
                 viewBox="0 0 1000 400"
@@ -639,73 +650,151 @@
 
                 <path
                     d="
-                    M 75,45
-                    C 105,15 145,15 180,32
-                    C 215,49 245,45 280,28
-                    C 315,10 355,15 390,32
-                    C 425,49 460,48 495,29
-                    C 530,10 570,15 605,32
-                    C 640,49 675,48 710,29
-                    C 745,10 785,15 820,32
-                    C 855,49 895,45 925,45
-                    C 955,45 965,75 950,100
-                    C 935,125 935,155 952,180
-                    C 969,205 965,235 945,255
-                    C 925,275 925,305 942,330
-                    C 959,355 940,380 910,370
-                    C 875,360 845,360 810,377
-                    C 775,394 735,390 700,373
-                    C 665,356 630,357 595,375
-                    C 560,393 520,390 485,373
-                    C 450,356 415,357 380,375
-                    C 345,393 305,390 270,373
-                    C 235,356 200,357 165,375
-                    C 130,393 90,380 80,355
-                    C 70,330 65,305 48,285
-                    C 31,265 35,235 52,210
-                    C 69,185 69,155 52,130
-                    C 35,105 45,65 75,45
-                    Z
-                    "
+                M 75,45
+                C 105,15 145,15 180,32
+                C 215,49 245,45 280,28
+                C 315,10 355,15 390,32
+                C 425,49 460,48 495,29
+                C 530,10 570,15 605,32
+                C 640,49 675,48 710,29
+                C 745,10 785,15 820,32
+                C 855,49 895,45 925,45
+                C 955,45 965,75 950,100
+                C 935,125 935,155 952,180
+                C 969,205 965,235 945,255
+                C 925,275 925,305 942,330
+                C 959,355 940,380 910,370
+                C 875,360 845,360 810,377
+                C 775,394 735,390 700,373
+                C 665,356 630,357 595,375
+                C 560,393 520,390 485,373
+                C 450,356 415,357 380,375
+                C 345,393 305,390 270,373
+                C 235,356 200,357 165,375
+                C 130,393 90,380 80,355
+                C 70,330 65,305 48,285
+                C 31,265 35,235 52,210
+                C 69,185 69,155 52,130
+                C 35,105 45,65 75,45
+                Z
+                "
                     fill="#DCEEF7"
                     stroke="#A9D2E6"
                     stroke-width="4"
                     vector-effect="non-scaling-stroke" />
-
             </svg>
 
-
             <!-- ISI BANNER -->
-            <div class="relative z-10 flex min-h-[320px] flex-col items-center justify-center px-8 py-20 text-center sm:min-h-[360px] sm:px-20">
+            <div class="relative z-10 px-8 py-12 text-center sm:px-12 sm:py-14 lg:px-16">
 
-                <span class="mb-4 inline-flex items-center rounded-full bg-white/70 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#35627D] sm:text-sm">
-                    Pendaftaran Peserta Didik
-                </span>
-
-                <h2 class="max-w-2xl text-2xl font-extrabold leading-tight text-[#245477] sm:text-3xl lg:text-4xl">
-                    Yuk, Mulai Perjalanan Belajar Si Kecil Bersama Kami!
+                <!-- JUDUL -->
+                <h2 class="mx-auto max-w-xl text-xl font-extrabold leading-tight text-[#245477] sm:text-2xl lg:text-3xl">
+                    Mulai Perjalanan Belajar Si Kecil Bersama Kami
                 </h2>
 
-                <p class="mt-4 max-w-xl text-sm leading-relaxed text-[#45677D] sm:text-base">
-                    Berikan pengalaman belajar yang menyenangkan, penuh kasih sayang,
-                    dan mendukung tumbuh kembang anak sejak dini.
+                <!-- DESKRIPSI -->
+                <p class="mx-auto mt-3 max-w-lg text-xs leading-relaxed text-[#45677D] sm:text-sm">
+                    Pilih metode pendaftaran sesuai kenyamanan Anda: isi formulir online langsung atau unduh dokumen formulir PDF untuk pendaftaran offline di sekolah.
                 </p>
 
-                <a
-                    href="{{ asset('build/documents/formulir_pendaftaran.pdf') }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mt-7 inline-flex items-center gap-2 rounded-full bg-[#FF8A24] px-7 py-3.5 text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#F47B12] hover:shadow-lg">
+                <!-- PILIHAN PENDAFTARAN -->
+                <div class="relative mx-auto mt-5 grid max-w-2xl -translate-y-2 grid-cols-1 gap-4 text-left sm:-translate-y-3 sm:grid-cols-2">
 
-                    Lihat Formulir Pendaftaran
-                    <span aria-hidden="true">→</span>
-                </a>
+                    <!-- MODE 1: ONLINE -->
+                    <div class="group flex flex-col justify-between rounded-2xl border-2 border-orange-300 bg-white/95 p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md sm:p-5">
 
+                        <div>
+                            <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+                                <span class="inline-flex items-center rounded-full bg-orange-100 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-orange-700">
+                                    ✨ Mode Online
+                                </span>
+
+                                <span class="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-1 text-[9px] font-bold text-emerald-700">
+                                    Praktis & Cepat
+                                </span>
+                            </div>
+
+                            <h3 class="text-base font-extrabold text-blue-950 sm:text-lg">
+                                Isi Formulir Online
+                            </h3>
+
+                            <p class="mt-2 text-xs leading-relaxed text-slate-600">
+                                Isi data calon siswa secara langsung di website tanpa perlu mencetak berkas. Nomor registrasi diterbitkan setelah pendaftaran berhasil.
+                            </p>
+
+                            <ul class="mt-3 space-y-2 text-[11px] font-medium text-slate-600">
+                                <li class="flex items-start gap-2">
+                                    <span class="font-bold text-emerald-500">✓</span>
+                                    <span>Pengisian formulir melalui HP atau komputer</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="font-bold text-emerald-500">✓</span>
+                                    <span>Konfirmasi pendaftaran melalui WhatsApp</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-5 border-t border-orange-100 pt-3">
+                            <a
+                                href="{{ route('pendaftaran.create') }}"
+                                class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FF8A24] px-3 py-2.5 text-xs font-bold text-white shadow-sm transition duration-200 hover:bg-[#F47B12]">
+                                Isi Formulir Online
+                                <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- MODE 2: OFFLINE -->
+                    <div class="group flex flex-col justify-between rounded-2xl border-2 border-sky-200 bg-white/95 p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md sm:p-5">
+
+                        <div>
+                            <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+                                <span class="inline-flex items-center rounded-full bg-sky-100 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-sky-800">
+                                    📄 Mode Offline
+                                </span>
+
+                                <span class="rounded-full border border-sky-200 bg-sky-50 px-2 py-1 text-[9px] font-bold text-sky-700">
+                                    Dokumen PDF
+                                </span>
+                            </div>
+
+                            <h3 class="text-base font-extrabold text-[#245477] sm:text-lg">
+                                Unduh Formulir PDF
+                            </h3>
+
+                            <p class="mt-2 text-xs leading-relaxed text-slate-600">
+                                Unduh formulir pendaftaran resmi, cetak dan isi dengan pulpen di rumah, lalu bawa berkas fisik ke sekolah.
+                            </p>
+
+                            <ul class="mt-3 space-y-2 text-[11px] font-medium text-slate-600">
+                                <li class="flex items-start gap-2">
+                                    <span class="font-bold text-sky-600">✓</span>
+                                    <span>Format dokumen resmi siap cetak ukuran A4</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="font-bold text-sky-600">✓</span>
+                                    <span>Serahkan berkas saat kunjungan ke sekolah</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-5 border-t border-sky-100 pt-3">
+                            <a
+                                href="{{ asset('documents/formulir_pendaftaran.pdf') }}"
+                                target="_blank"
+                                download="formulir_pendaftaran_paud_haqqul_yaqin.pdf"
+                                class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#245477] px-3 py-2.5 text-xs font-bold text-white shadow-sm transition duration-200 hover:bg-[#1b415d]">
+                                Unduh Formulir (PDF)
+                                <span aria-hidden="true">⬇</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-
         </div>
-
     </section>
+
 
 </main>
 

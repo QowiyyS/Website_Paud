@@ -27,8 +27,10 @@
         <nav class="flex-1 overflow-y-auto px-3 py-5">
             @php
                 $raporMenungguCount = \App\Models\HeadRaport::where('status_rapor', 'diajukan')->count();
+                $pendaftaranBaruCount = \App\Models\Pendaftaran::where('status', 'menunggu')->count();
                 $menu = [
                     ['label' => 'Dashboard', 'url' => route('admin.dashboard'), 'active' => request()->routeIs('admin.dashboard'), 'badge' => null],
+                    ['label' => 'Pendaftaran Masuk', 'url' => route('admin.pendaftaran.index'), 'active' => request()->routeIs('admin.pendaftaran.*'), 'badge' => $pendaftaranBaruCount],
                     ['label' => 'Data Siswa (KB & TK)', 'url' => route('admin.anak.index'), 'active' => request()->routeIs('admin.anak.*'), 'badge' => null],
                     ['label' => 'Akun & Relasi Wali', 'url' => route('admin.pengguna.index'), 'active' => request()->routeIs('admin.pengguna.*'), 'badge' => null],
                     ['label' => 'Guru & Staf', 'url' => route('admin.guru.index'), 'active' => request()->routeIs('admin.guru.*'), 'badge' => null],

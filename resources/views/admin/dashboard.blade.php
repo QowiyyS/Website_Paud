@@ -21,6 +21,12 @@
                 </p>
 
                 <div class="mt-5 flex flex-wrap gap-3">
+                    <a href="{{ route('admin.pendaftaran.index') }}" class="rounded-full bg-orange-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-orange-600 transition">
+                        Pendaftaran Masuk (PPDB)
+                        @if($totalPendaftaranMenunggu > 0)
+                            <span class="ml-1.5 rounded-full bg-white px-2 py-0.5 text-[10px] font-black text-orange-600">{{ $totalPendaftaranMenunggu }}</span>
+                        @endif
+                    </a>
                     <a href="{{ route('rapor.index') }}" class="rounded-full bg-blue-900 px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-blue-950 transition">
                         Kelola Rapor Triwulan
                         @if($raporMenunggu->count() > 0)
@@ -30,7 +36,7 @@
                     <a href="{{ route('admin.anak.index') }}" class="rounded-full bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-700 transition">
                         Data Siswa (KB & TK)
                     </a>
-                    <a href="{{ route('admin.pengguna.index') }}" class="rounded-full bg-orange-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-orange-600 transition">
+                    <a href="{{ route('admin.pengguna.index') }}" class="rounded-full bg-slate-700 px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-slate-800 transition">
                         Akun & Relasi Wali
                     </a>
                 </div>
@@ -72,6 +78,40 @@
             <p class="mt-2 border-t border-orange-100 pt-2 text-xs font-medium text-slate-500">Arsip Penilaian</p>
         </div>
     </div>
+
+    <!-- ANTREAN PENDAFTARAN SISWA BARU -->
+    @if($totalPendaftaranMenunggu > 0)
+        <div class="mt-8 rounded-[2rem] border-2 border-orange-300 bg-orange-50/70 p-6">
+            <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+                <div>
+                    <h3 class="text-base font-black text-orange-950">Pendaftaran Siswa Baru Menunggu Verifikasi ({{ $totalPendaftaranMenunggu }})</h3>
+                    <p class="text-xs text-orange-800">Calon peserta didik baru telah mengisi formulir online dan menunggu konfirmasi verifikasi admin.</p>
+                </div>
+                <a href="{{ route('admin.pendaftaran.index', ['status' => 'menunggu']) }}" class="rounded-full bg-orange-500 px-4 py-1.5 text-xs font-bold text-white hover:bg-orange-600 transition">
+                    Lihat Semua Pendaftar
+                </a>
+            </div>
+            <div class="overflow-hidden rounded-2xl border border-orange-200 bg-white">
+                <table class="w-full text-left text-xs sm:text-sm">
+                    <tbody class="divide-y divide-orange-100">
+                        @foreach($pendaftaranTerbaru->where('status', 'menunggu') as $pt)
+                            <tr class="hover:bg-orange-50/40">
+                                <td class="px-5 py-3.5">
+                                    <p class="font-bold text-blue-950">{{ $pt->nama_lengkap }}</p>
+                                    <p class="text-xs text-slate-500">Program: {{ $pt->program }} · No. Reg: <span class="font-mono">{{ $pt->nomor_registrasi }}</span> · Wali: {{ $pt->nama_wali_utama }} (+{{ $pt->kontak_utama }})</p>
+                                </td>
+                                <td class="px-5 py-3.5 text-right">
+                                    <a href="{{ route('admin.pendaftaran.show', $pt->id_pendaftaran) }}" class="rounded-full bg-orange-500 px-4 py-1.5 text-xs font-bold text-white hover:bg-orange-600 transition">
+                                        Periksa Berkas
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
 
     <!-- ANTREAN PENGESAHAN -->
     @if($raporMenunggu->count() > 0)

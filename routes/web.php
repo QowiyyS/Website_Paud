@@ -12,9 +12,16 @@ use App\Http\Controllers\Admin\PenggunaController;
 use App\Http\Controllers\Admin\PeriodeRaporController;
 use App\Http\Controllers\Admin\WaliAnakController;
 use App\Http\Controllers\Admin\RaporAdminController;
+use App\Http\Controllers\Admin\PendaftaranController as AdminPendaftaranController;
+use App\Http\Controllers\PendaftaranController;
 
 // ================= RUTE PUBLIK =================
 Route::view('/', 'landing.index')->name('landing');
+
+// Alur Pendaftaran Online Siswa Baru
+Route::get('/pendaftaran', [PendaftaranController::class, 'create'])->name('pendaftaran.create');
+Route::post('/pendaftaran', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+Route::get('/pendaftaran/berhasil/{nomor}', [PendaftaranController::class, 'sukses'])->name('pendaftaran.sukses');
 
 // Autentikasi (Login & Logout)
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -55,6 +62,13 @@ Route::middleware(['auth', 'peran:admin,admin_guru'])->prefix('admin')->name('ad
 
     // Master Periode Rapor & Tahun Ajaran (POV Admin)
     Route::resource('periode', PeriodeRaporController::class);
+
+    // Manajemen Pendaftaran Online (PPDB)
+    Route::get('pendaftaran', [AdminPendaftaranController::class, 'index'])->name('pendaftaran.index');
+    Route::get('pendaftaran/{pendaftaran}', [AdminPendaftaranController::class, 'show'])->name('pendaftaran.show');
+    Route::put('pendaftaran/{pendaftaran}/status', [AdminPendaftaranController::class, 'updateStatus'])->name('pendaftaran.update-status');
+    Route::post('pendaftaran/{pendaftaran}/jadikan-siswa', [AdminPendaftaranController::class, 'jadikanSiswa'])->name('pendaftaran.jadikan-siswa');
+    Route::delete('pendaftaran/{pendaftaran}', [AdminPendaftaranController::class, 'destroy'])->name('pendaftaran.destroy');
 
     // Kontrol Persetujuan, Penerbitan, dan Pembukaan Ulang Rapor (POV Admin)
     Route::get('rapor', [RaporAdminController::class, 'index'])->name('rapor.index');
